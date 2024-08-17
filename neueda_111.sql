@@ -1,0 +1,204 @@
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+--
+-- Host: localhost    Database: neueda_111
+-- ------------------------------------------------------
+-- Server version	8.0.31
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `assets`
+--
+
+DROP TABLE IF EXISTS `assets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `assets` (
+  `symbol` char(12) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `asset_type` varchar(255) COLLATE armscii8_bin DEFAULT NULL,
+  `asset_name` varchar(255) COLLATE armscii8_bin DEFAULT NULL,
+  `closing_price` double NOT NULL,
+  PRIMARY KEY (`symbol`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `assets`
+--
+
+LOCK TABLES `assets` WRITE;
+/*!40000 ALTER TABLE `assets` DISABLE KEYS */;
+INSERT INTO `assets` VALUES ('ADANIGREENET','ETF','Adani Green ETF',1200),('ADITYABIRLAM','MF','Aditya Birla MF',26),('ASIANPAINT','EQ','Asian Paints Ltd.',3200),('AXISMF','MF','Axis Mutual Fund',22),('BAJFINANCE','EQ','Bajaj Finance Ltd.',7000),('BANKBEES','ETF','Bank BeES',360.5),('DSPMF','MF','DSP Mutual Fund',24),('GOLDBEES','ETF','Gold BeES',4500.75),('HCLTECH','EQ','HCL Technologies Ltd.',1200),('HDFCBANK','EQ','HDFC Bank Ltd.',1600.25),('HDFCBANKETF','ETF','HDFC Bank ETF',1600),('HDFCMF','MF','HDFC Mutual Fund',25),('HINDALCO','EQ','Hindalco Industries',400),('HINDUNILVR','EQ','Hindustan Unilever Ltd.',2500),('ICICIBANK','EQ','ICICI Bank Ltd.',750),('ICICIBANKETF','ETF','ICICI Bank ETF',150),('ICICIMF','MF','ICICI Mutual Fund',30),('INFY','EQ','Infosys Ltd.',1450),('KOTAKBANK','EQ','Kotak Mahindra Bank',1800),('KOTAKMF','MF','Kotak Mutual Fund',32),('LT','EQ','Larsen & Toubro Ltd.',1900),('LTMF','MF','L&T Mutual Fund',29),('MARUTI','EQ','Maruti Suzuki India',8000),('MOTILALMF','MF','Motilal Oswal MF',35),('NESTLEIND','EQ','Nestle India Ltd.',19000),('NIFTY50ETF','ETF','Nifty 50 ETF',200),('NIFTYBEES','ETF','Nifty BeES',180.25),('NIPPONMF','MF','Nippon India MF',28),('ONGC','EQ','Oil and Natural Gas Corp.',150),('RELIANCE','EQ','Reliance Industries Ltd.',2450.5),('RELIANCEETF','ETF','Reliance ETF',2500),('SBIETF','ETF','SBI ETF Nifty',200),('SBIN','EQ','State Bank of India',600),('TATAMOTORS','EQ','Tata Motors Ltd.',450),('TATAMOTORSET','ETF','Tata Motors ETF',450),('TCS','EQ','Tata Consultancy Services',3500.75),('TECHM','EQ','Tech Mahindra Ltd.',1500),('ULTRACEMCO','EQ','UltraTech Cement Ltd.',800),('UTIMF','MF','UTI Mutual Fund',27),('WIPRO','EQ','Wipro Ltd.',650),('WIPROETF','ETF','Wipro ETF',500);
+/*!40000 ALTER TABLE `assets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fund_balance_history`
+--
+
+DROP TABLE IF EXISTS `fund_balance_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fund_balance_history` (
+  `fund_manager_id` int NOT NULL,
+  `balance_date` varchar(255) COLLATE armscii8_bin NOT NULL,
+  `balance` double DEFAULT NULL,
+  PRIMARY KEY (`fund_manager_id`,`balance_date`),
+  CONSTRAINT `fund_balance_history_ibfk_1` FOREIGN KEY (`fund_manager_id`) REFERENCES `fund_manager` (`fund_manager_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fund_balance_history`
+--
+
+LOCK TABLES `fund_balance_history` WRITE;
+/*!40000 ALTER TABLE `fund_balance_history` DISABLE KEYS */;
+INSERT INTO `fund_balance_history` VALUES (1,'2024-06-01',100000),(1,'2024-06-02',101500),(1,'2024-06-03',103000),(1,'2024-06-04',104500),(1,'2024-06-05',106000),(1,'2024-06-06',107500),(1,'2024-06-07',109000),(1,'2024-06-08',110500),(1,'2024-06-09',112000),(1,'2024-06-10',113500),(1,'2024-06-11',115000),(1,'2024-06-12',116500),(1,'2024-06-13',118000),(1,'2024-06-14',119500),(1,'2024-06-15',121000),(1,'2024-06-16',122500),(1,'2024-06-17',124000),(1,'2024-06-18',125500),(1,'2024-06-19',127000),(1,'2024-06-20',128500),(1,'2024-06-21',130000),(1,'2024-06-22',131500),(1,'2024-06-23',133000),(1,'2024-06-24',134500),(1,'2024-06-25',136000),(1,'2024-06-26',137500),(1,'2024-06-27',139000),(1,'2024-06-28',140500),(1,'2024-06-29',142000),(1,'2024-06-30',143500),(1,'2024-07-01',145000),(1,'2024-07-02',146500),(1,'2024-08-15',2100001),(2,'2024-06-01',150000),(2,'2024-06-02',151500),(2,'2024-06-03',153000),(2,'2024-06-04',154500),(2,'2024-06-05',156000),(2,'2024-06-06',157500),(2,'2024-06-07',159000),(2,'2024-06-08',160500),(2,'2024-06-09',162000),(2,'2024-06-10',163500),(2,'2024-06-11',165000),(2,'2024-06-12',166500),(2,'2024-06-13',168000),(2,'2024-06-14',169500),(2,'2024-06-15',171000),(2,'2024-06-16',172500),(2,'2024-06-17',174000),(2,'2024-06-18',175500),(2,'2024-06-19',177000),(2,'2024-06-20',178500),(2,'2024-06-21',180000),(2,'2024-06-22',181500),(2,'2024-06-23',183000),(2,'2024-06-24',184500),(2,'2024-06-25',186000),(2,'2024-06-26',187500),(2,'2024-06-27',189000),(2,'2024-06-28',190500),(2,'2024-06-29',192000),(2,'2024-06-30',193500),(2,'2024-07-01',195000),(2,'2024-07-02',196500),(2,'2024-08-15',155000),(2,'2024-08-16',405000),(3,'2024-06-01',200000),(3,'2024-06-02',201500),(3,'2024-06-03',203000),(3,'2024-06-04',204500),(3,'2024-06-05',206000),(3,'2024-06-06',207500),(3,'2024-06-07',209000),(3,'2024-06-08',210500),(3,'2024-06-09',212000),(3,'2024-06-10',213500),(3,'2024-06-11',215000),(3,'2024-06-12',216500),(3,'2024-06-13',218000),(3,'2024-06-14',219500),(3,'2024-06-15',221000),(3,'2024-06-16',222500),(3,'2024-06-17',224000),(3,'2024-06-18',225500),(3,'2024-06-19',227000),(3,'2024-06-20',228500),(3,'2024-06-21',230000),(3,'2024-06-22',231500),(3,'2024-06-23',233000),(3,'2024-06-24',234500),(3,'2024-06-25',236000),(3,'2024-06-26',237500),(3,'2024-06-27',239000),(3,'2024-06-28',240500),(3,'2024-06-29',242000),(3,'2024-06-30',243500),(3,'2024-07-01',245000),(3,'2024-07-02',246500);
+/*!40000 ALTER TABLE `fund_balance_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fund_manager`
+--
+
+DROP TABLE IF EXISTS `fund_manager`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fund_manager` (
+  `fund_manager_id` int NOT NULL,
+  `fm_name` varchar(100) COLLATE armscii8_bin NOT NULL,
+  `current_balance` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `datetime` varchar(255) COLLATE armscii8_bin DEFAULT NULL,
+  `date` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`fund_manager_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fund_manager`
+--
+
+LOCK TABLES `fund_manager` WRITE;
+/*!40000 ALTER TABLE `fund_manager` DISABLE KEYS */;
+INSERT INTO `fund_manager` VALUES (1,'Wells Fargo',2100001.0000,'2024-08-15',NULL),(2,'Fedility',405000.0000,'2024-08-16',NULL),(3,'Invesco',200000.0000,'2024-08-06 15:55:22',NULL);
+/*!40000 ALTER TABLE `fund_manager` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `funds`
+--
+
+DROP TABLE IF EXISTS `funds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `funds` (
+  `rec_id` int NOT NULL AUTO_INCREMENT,
+  `tran_type` varchar(1) COLLATE armscii8_bin DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  `tran_time` varchar(255) COLLATE armscii8_bin DEFAULT NULL,
+  `fund_manager_id` int NOT NULL,
+  `fund_acc_balance` double DEFAULT NULL,
+  `bank_acc_no` varchar(50) COLLATE armscii8_bin DEFAULT NULL,
+  `tran_amount` double DEFAULT NULL,
+  `tran_date` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`rec_id`),
+  KEY `fund_manager_id` (`fund_manager_id`),
+  CONSTRAINT `funds_ibfk_1` FOREIGN KEY (`fund_manager_id`) REFERENCES `fund_manager` (`fund_manager_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `funds`
+--
+
+LOCK TABLES `funds` WRITE;
+/*!40000 ALTER TABLE `funds` DISABLE KEYS */;
+INSERT INTO `funds` VALUES (1,'d',1000,'2024-06-01 10:00:00',1,100000,'1234567890',NULL,NULL),(2,'d',1500,'2024-06-10 11:30:00',1,98000,'1234567890',NULL,NULL),(3,'d',2000,'2024-06-20 14:45:00',1,96500,'1234567890',NULL,NULL),(4,'c',2500,'2024-06-05 09:15:00',1,100500,'1234567890',NULL,NULL),(5,'c',3000,'2024-06-15 13:20:00',1,103500,'1234567890',NULL,NULL),(6,'c',3500,'2024-06-25 15:30:00',1,107000,'1234567890',NULL,NULL),(7,'d',1200,'2024-06-02 10:00:00',2,150000,'0987654321',NULL,NULL),(8,'d',1800,'2024-06-12 11:30:00',2,148800,'0987654321',NULL,NULL),(9,'d',2200,'2024-06-22 14:45:00',2,146000,'0987654321',NULL,NULL),(10,'c',2700,'2024-06-06 09:15:00',2,152700,'0987654321',NULL,NULL),(11,'c',3300,'2024-06-16 13:20:00',2,156000,'0987654321',NULL,NULL),(12,'c',3900,'2024-06-26 15:30:00',2,159900,'0987654321',NULL,NULL),(13,'d',1100,'2024-06-03 10:00:00',3,200000,'1122334455',NULL,NULL),(14,'d',1600,'2024-06-13 11:30:00',3,198900,'1122334455',NULL,NULL),(15,'d',2100,'2024-06-23 14:45:00',3,197800,'1122334455',NULL,NULL),(16,'c',2600,'2024-06-07 09:15:00',3,203500,'1122334455',NULL,NULL),(17,'c',3100,'2024-06-17 13:20:00',3,206600,'1122334455',NULL,NULL),(18,'c',3600,'2024-06-27 15:30:00',3,210200,'1122334455',NULL,NULL),(19,'c',5000,'2024-08-15',2,155000,NULL,NULL,NULL),(20,'c',10000000,'2024-08-15',1,10100000,NULL,NULL,NULL),(21,'d',3999999,'2024-08-15',1,6100001,NULL,NULL,NULL),(22,'d',4000000,'2024-08-15',1,2100001,NULL,NULL,NULL),(23,'c',250000,'2024-08-16',2,405000,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `funds` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portfolio`
+--
+
+DROP TABLE IF EXISTS `portfolio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `portfolio` (
+  `portfolio_id` bigint NOT NULL AUTO_INCREMENT,
+  `quantity` int DEFAULT NULL,
+  `total_value` double DEFAULT NULL,
+  `asset_id` varchar(255) COLLATE armscii8_bin NOT NULL,
+  `fund_manager_id` int NOT NULL,
+  PRIMARY KEY (`portfolio_id`),
+  KEY `FKr9wjswcm3uva0ppei9cxsr2yx` (`asset_id`),
+  KEY `FKa4t7u39lswly4lqlp07ry5ta7` (`fund_manager_id`),
+  CONSTRAINT `FKa4t7u39lswly4lqlp07ry5ta7` FOREIGN KEY (`fund_manager_id`) REFERENCES `fund_manager` (`fund_manager_id`),
+  CONSTRAINT `FKr9wjswcm3uva0ppei9cxsr2yx` FOREIGN KEY (`asset_id`) REFERENCES `assets` (`symbol`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portfolio`
+--
+
+LOCK TABLES `portfolio` WRITE;
+/*!40000 ALTER TABLE `portfolio` DISABLE KEYS */;
+/*!40000 ALTER TABLE `portfolio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trade_book`
+--
+
+DROP TABLE IF EXISTS `trade_book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `trade_book` (
+  `trade_id` bigint NOT NULL AUTO_INCREMENT,
+  `asset_id` char(12) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `asset_price` double DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `trade_amount` double DEFAULT NULL,
+  `buy_sell` varchar(255) COLLATE armscii8_bin DEFAULT NULL,
+  `tran_time` datetime NOT NULL,
+  `fund_manager_id` int NOT NULL,
+  `tran_status` varchar(255) COLLATE armscii8_bin DEFAULT NULL,
+  PRIMARY KEY (`trade_id`),
+  KEY `asset_id` (`asset_id`),
+  KEY `fund_manager_id` (`fund_manager_id`),
+  CONSTRAINT `trade_book_ibfk_1` FOREIGN KEY (`asset_id`) REFERENCES `assets` (`symbol`),
+  CONSTRAINT `trade_book_ibfk_2` FOREIGN KEY (`fund_manager_id`) REFERENCES `fund_manager` (`fund_manager_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trade_book`
+--
+
+LOCK TABLES `trade_book` WRITE;
+/*!40000 ALTER TABLE `trade_book` DISABLE KEYS */;
+INSERT INTO `trade_book` VALUES (1,'HINDALCO',400,100,40000,'P','2024-06-01 10:00:00',1,'A'),(2,'HINDUNILVR',2500,50,125000,'S','2024-06-02 11:30:00',1,'A'),(3,'ICICIBANK',750,200,150000,'P','2024-06-03 14:45:00',1,'A'),(4,'ICICIBANKETF',150,150,22500,'S','2024-06-04 09:15:00',1,'A'),(5,'ICICIMF',30,100,3000,'P','2024-06-05 13:20:00',1,'A'),(6,'INFY',1450,80,116000,'S','2024-06-06 11:00:00',1,'A'),(7,'KOTAKBANK',1800,75,135000,'P','2024-06-07 15:30:00',1,'A'),(8,'KOTAKMF',32,200,6400,'S','2024-06-08 10:45:00',1,'A'),(9,'LT',1900,60,114000,'P','2024-06-09 14:00:00',1,'A'),(10,'LTMF',29,150,4350,'S','2024-06-10 09:30:00',1,'A'),(11,'MARUTI',8000,10,80000,'P','2024-06-11 13:15:00',1,'A'),(12,'MOTILALMF',35,120,4200,'S','2024-06-12 11:40:00',1,'A'),(13,'NESTLEIND',19000,5,95000,'P','2024-06-13 15:10:00',1,'A'),(14,'NIFTY50ETF',200,80,16000,'S','2024-06-14 10:00:00',1,'A'),(15,'NIFTYBEES',180.25,100,18025,'P','2024-06-15 14:20:00',1,'A'),(16,'NIPPONMF',28,150,4200,'S','2024-06-16 09:45:00',1,'A'),(17,'ONGC',150,300,45000,'P','2024-06-17 13:30:00',1,'A'),(18,'RELIANCE',2450.5,20,49010,'S','2024-06-18 11:15:00',1,'A'),(19,'RELIANCEETF',2500,30,75000,'P','2024-06-19 15:00:00',1,'A'),(20,'SBIETF',200,150,30000,'S','2024-06-20 10:30:00',1,'A'),(21,'SBIN',600,100,60000,'P','2024-06-21 14:10:00',1,'A'),(22,'TATAMOTORS',450,150,67500,'S','2024-06-22 09:00:00',1,'A'),(23,'TATAMOTORSET',450,200,90000,'P','2024-06-23 13:45:00',1,'A'),(24,'TCS',3500,30,105000,'S','2024-06-24 11:30:00',1,'A'),(25,'TECHM',1500,50,75000,'P','2024-06-25 15:20:00',1,'A'),(26,'ULTRACEMCO',800,25,20000,'S','2024-06-26 10:15:00',1,'A'),(27,'UTIMF',27,150,4050,'P','2024-06-27 14:00:00',1,'A'),(28,'WIPRO',650,75,48750,'S','2024-06-28 09:30:00',1,'A'),(29,'WIPROETF',650,100,65000,'P','2024-06-29 13:10:00',1,'A'),(30,'HINDALCO',400,100,40000,'S','2024-06-30 11:45:00',1,'A'),(31,'HINDUNILVR',2500,50,125000,'P','2024-06-15 10:00:00',2,'A'),(32,'ICICIBANK',750,200,150000,'S','2024-06-16 14:30:00',2,'A'),(33,'ICICIBANKETF',150,150,22500,'P','2024-06-17 09:15:00',2,'A'),(34,'ICICIMF',30,100,3000,'S','2024-06-18 13:00:00',2,'A'),(35,'INFY',1450,80,116000,'P','2024-06-19 11:45:00',2,'A'),(36,'KOTAKBANK',1800,75,135000,'S','2024-06-20 15:30:00',2,'A'),(37,'KOTAKMF',32,200,6400,'P','2024-06-21 10:00:00',2,'A'),(38,'LT',1900,60,114000,'S','2024-06-22 14:15:00',2,'A'),(39,'LTMF',29,150,4350,'P','2024-06-23 09:30:00',2,'A'),(40,'MARUTI',8000,10,80000,'S','2024-06-24 13:10:00',2,'A'),(41,'MOTILALMF',35,120,4200,'P','2024-06-25 11:00:00',2,'A'),(42,'NESTLEIND',19000,5,95000,'S','2024-06-26 15:45:00',2,'A'),(43,'NIFTY50ETF',200,80,16000,'P','2024-06-27 10:30:00',2,'A'),(44,'NIFTYBEES',180.25,100,18025,'S','2024-06-28 09:00:00',2,'A'),(45,'NIPPONMF',28,150,4200,'P','2024-06-29 13:20:00',2,'A'),(46,'ONGC',150,300,45000,'S','2024-06-30 11:15:00',2,'A'),(47,'RELIANCE',2450.5,20,49010,'P','2024-07-01 10:00:00',2,'A'),(48,'RELIANCEETF',2500,30,75000,'S','2024-07-02 14:20:00',2,'A'),(49,'SBIETF',200,150,30000,'P','2024-07-03 09:30:00',2,'A'),(50,'SBIN',600,100,60000,'S','2024-07-04 13:10:00',2,'A'),(51,'TATAMOTORS',450,150,67500,'P','2024-07-05 11:00:00',2,'A'),(52,'TATAMOTORSET',450,200,90000,'S','2024-07-06 15:45:00',2,'A'),(53,'TCS',3500,30,105000,'P','2024-07-07 10:00:00',2,'A'),(54,'TECHM',1500,50,75000,'S','2024-07-08 14:15:00',2,'A'),(55,'ULTRACEMCO',800,25,20000,'P','2024-07-09 09:30:00',2,'A'),(56,'UTIMF',27,150,4050,'S','2024-07-10 13:20:00',2,'A'),(57,'WIPRO',650,75,48750,'P','2024-07-11 11:45:00',2,'A'),(58,'WIPROETF',650,100,65000,'S','2024-07-12 10:00:00',2,'A'),(59,'HINDALCO',400,100,40000,'P','2024-07-01 10:00:00',3,'A'),(60,'HINDUNILVR',2500,50,125000,'S','2024-07-02 14:30:00',3,'A'),(61,'ICICIBANK',750,200,150000,'P','2024-07-03 09:15:00',3,'A'),(62,'ICICIBANKETF',150,150,22500,'S','2024-07-04 13:00:00',3,'A'),(63,'ICICIMF',30,100,3000,'P','2024-07-05 11:45:00',3,'A'),(64,'INFY',1450,80,116000,'S','2024-07-06 15:30:00',3,'A'),(65,'KOTAKBANK',1800,75,135000,'P','2024-07-07 10:00:00',3,'A'),(66,'KOTAKMF',32,200,6400,'S','2024-07-08 14:15:00',3,'A'),(67,'LT',1900,60,114000,'P','2024-07-09 09:30:00',3,'A'),(68,'LTMF',29,150,4350,'S','2024-07-10 13:10:00',3,'A'),(69,'MARUTI',8000,10,80000,'P','2024-07-11 11:00:00',3,'A'),(70,'MOTILALMF',35,120,4200,'S','2024-07-12 15:45:00',3,'A'),(71,'NESTLEIND',19000,5,95000,'P','2024-07-13 10:30:00',3,'A'),(72,'NIFTY50ETF',200,80,16000,'S','2024-07-14 09:00:00',3,'A'),(73,'NIFTYBEES',180.25,100,18025,'P','2024-07-15 13:20:00',3,'A'),(74,'NIPPONMF',28,150,4200,'S','2024-07-16 11:15:00',3,'A'),(75,'ONGC',150,300,45000,'P','2024-07-17 10:00:00',3,'A'),(76,'RELIANCE',2450.5,20,49010,'S','2024-07-18 14:20:00',3,'A'),(77,'RELIANCEETF',2500,30,75000,'P','2024-07-19 09:30:00',3,'A'),(78,'SBIETF',200,150,30000,'S','2024-07-20 13:10:00',3,'A'),(79,'SBIN',600,100,60000,'P','2024-07-21 11:00:00',3,'A'),(80,'TATAMOTORS',450,150,67500,'S','2024-07-22 15:45:00',3,'A'),(81,'TATAMOTORSET',450,200,90000,'P','2024-07-23 10:00:00',3,'A'),(82,'TCS',3500,30,105000,'S','2024-07-24 14:15:00',3,'A'),(83,'TECHM',1500,50,75000,'P','2024-07-25 09:30:00',3,'A'),(84,'ULTRACEMCO',800,25,20000,'S','2024-07-26 13:20:00',3,'A'),(85,'UTIMF',27,150,4050,'P','2024-07-27 11:45:00',3,'A'),(86,'WIPRO',650,75,48750,'S','2024-07-28 10:00:00',3,'A'),(87,'WIPROETF',650,100,65000,'P','2024-07-29 14:15:00',3,'A'),(88,'HDFCBANK',1600.25,10000,16002500,'B','2024-08-15 06:38:49',1,'P'),(89,'BAJFINANCE',7000,1,7000,'B','2024-08-15 06:47:28',2,'P'),(90,'HINDALCO',400,1,400,'B','2024-08-15 06:48:22',1,'P'),(91,'HDFCBANK',1600.25,1,1600.25,'S','2024-08-15 07:00:47',1,'P'),(92,'HINDALCO',400,12,4800,'B','2024-08-15 07:10:07',1,'P'),(93,'HINDALCO',394.73333333333335,2,721,'S','2024-08-15 07:16:42',1,'A'),(94,'HDFCBANK',1600.25,35,56008.75,'B','2024-08-15 07:33:16',1,'A'),(95,'HINDALCO',400,10,4000,'B','2024-08-15 08:10:41',1,'A');
+/*!40000 ALTER TABLE `trade_book` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-08-15 14:37:47
